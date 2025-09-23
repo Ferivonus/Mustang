@@ -2,7 +2,7 @@
 #include <thread>
 #include <chrono>
 
-// Bu fonksiyon, terminale karakterleri tek tek yazdýrýr
+// This function prints characters to the terminal one by one
 void typeWriter(const std::string& text, int delay_ms) {
     for (char c : text) {
         std::cout << c << std::flush;
@@ -12,7 +12,7 @@ void typeWriter(const std::string& text, int delay_ms) {
 
 int main()
 {
-    // Yeþil renk
+    // Green color
     std::cout << "\033[32m";
     std::cout << "                  /\\_" << std::endl;
     std::cout << "  .-.   _.-''-.  \\  '" << std::endl;
@@ -20,24 +20,24 @@ int main()
     std::cout << "   \\   `'-.   ._,  (" << std::endl;
     std::cout << "    `'-._  `''--'  `'._" << std::endl;
 
-    // Rengi sýfýrla
+    // Reset color
     std::cout << "\033[0m";
 
     std::cout << "\n";
 
-    // Sarý renk
+    // Yellow color
     std::cout << "\033[33m";
-    typeWriter("Mustang-horse projesi baþlýyor...", 50);
+    typeWriter("Mustang-horse project is starting...", 50);
     std::cout << "\n";
 
-    // Cam göbeði rengi
+    // Cyan color
     std::cout << "\033[36m";
-    typeWriter("Kodlar indirildi ve çalýþtýrýlýyor!", 50);
+    typeWriter("Code downloaded and running!", 50);
     std::cout << "\n";
 
-    // Yeþil renk
+    // Green color
     std::cout << "\033[32m";
-    typeWriter("Baþarýlý! Program hazýr ve çalýþýyor.", 50);
+    typeWriter("Success! The program is ready and running.", 50);
     std::cout << "\033[0m\n";
 
     return 0;
