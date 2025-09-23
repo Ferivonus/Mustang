@@ -1,2 +1,18 @@
 /.vs
 /.git
+
+# Visual Studio
+.vs/
+*.sln
+*.suo
+*.user
+*.vcxproj*
+*.vcxproj.filters # filters dosyasını dahil etmek istersen
+*.dll
+*.pdb
+*.obj
+*.lib
+
+# Binaries
+bin/
+obj/
