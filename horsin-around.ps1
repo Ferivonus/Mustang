@@ -1,27 +1,28 @@
-# 1. Değişkenleri tanımla
+# This script downloads, extracts, and runs a GitHub project within the current directory.
+
+# 1. Define variables
 $url = "https://github.com/Ferivonus/Mustang/archive/refs/heads/master.zip"
-$projectDir = "C:\Temporary-Project"
+$currentDir = Get-Location
+$projectDir = Join-Path -Path $currentDir -ChildPath "Temporary-Project"
 $zipPath = Join-Path -Path $projectDir -ChildPath "Mustang.zip"
 $extractPath = Join-Path -Path $projectDir -ChildPath "Mustang-master"
+$exePath = Join-Path -Path $extractPath -ChildPath "x64\Release\Mustang-horse.exe"
 
-# EXE dosyasının yeni yolu
-$exePath = Join-Path -Path $extractPath -ChildPath "Mustang-horse\x64\Release\Mustang-horse.exe"
-
-# 2. İşlemler için klasör oluştur
-Write-Host "Geçici klasör oluşturuluyor: $projectDir" -ForegroundColor Cyan
+# 2. Create a folder for the operations
+Write-Host "Creating temporary folder: $projectDir" -ForegroundColor Cyan
 New-Item -ItemType Directory -Path $projectDir -Force
 
-# 3. Klasörün içine geç
+# 3. Change into the new folder
 cd $projectDir
 
-# 4. ZIP dosyasını indir
-Write-Host "Proje indiriliyor..." -ForegroundColor Yellow
+# 4. Download the ZIP file
+Write-Host "Downloading the project..." -ForegroundColor Yellow
 Invoke-WebRequest -Uri $url -OutFile $zipPath
 
-# 5. Dosyayı çıkar (unzip)
-Write-Host "Dosyalar çıkarılıyor..." -ForegroundColor Green
+# 5. Extract the files from the ZIP
+Write-Host "Extracting files..." -ForegroundColor Green
 Expand-Archive -Path $zipPath -DestinationPath $projectDir -Force
 
-# 6. .exe dosyasını çalıştır
-Write-Host "Uygulama başlatılıyor..." -ForegroundColor Magenta
+# 6. Run the executable file
+Write-Host "Starting the application..." -ForegroundColor Magenta
 Start-Process -FilePath $exePath

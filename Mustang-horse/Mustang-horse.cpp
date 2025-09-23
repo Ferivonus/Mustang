@@ -40,5 +40,7 @@ int main()
     typeWriter("Success! The program is ready and running.", 50);
     std::cout << "\033[0m\n";
 
+	system("pause");
+
     return 0;
 }
